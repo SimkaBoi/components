@@ -74,6 +74,8 @@
       :clipped-left="clipped"
       fixed
       app
+      flat
+      class="grey darken-4"
     >
       <v-btn
         icon
@@ -81,7 +83,13 @@
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
+      <v-img
+        class="mx-2"
+        src="https://www.youtube.com/about/static/svgs/icons/brand-resources/YouTube-logo-full_color_dark.svg"
+        max-height="80"
+        max-width="90"
+        contain
+      ></v-img>
       <v-spacer />
       <v-btn
         icon
