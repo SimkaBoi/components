@@ -10,15 +10,11 @@
     >
       <div v-if="miniVariant">
         <v-list nav dense>
-          <v-list-item v-for="[icon, text] in links_mini" :key="icon" link>
+          <v-list-item v-for="[icon] in links_mini" :key="icon" link>
             <div class="d-flex flex-column align-left">
               <v-list-item-icon>
                 <v-icon color="grey">{{ icon }}</v-icon>
               </v-list-item-icon>
-
-              <v-list-item-content style="text-align=left;">
-                <v-list-item-title>{{ text }}</v-list-item-title>
-              </v-list-item-content>
             </div>
           </v-list-item>
         </v-list>
@@ -93,7 +89,7 @@
           </div>
           <div v-else>
             <v-list-item
-              v-for="[avatar, name, notification] in subscriptions"
+              v-for="[avatar, name, notification] in more_subscriptions"
               :key="avatar"
               link
             >
@@ -110,6 +106,15 @@
               <v-icon v-if="notification === 'live'" color="#f00" size="20">{{
                 "mdi-access-point"
               }}</v-icon>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-icon class="mr-4">
+                <v-icon color="grey">{{ "mdi-plus-circle" }}</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>Kanalite sirvimine</v-list-item-title>
+              </v-list-item-content>
             </v-list-item>
             <v-list-item
               link
@@ -181,8 +186,45 @@
         contain
       ></v-img>
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
+      <v-text-field
+        flat
+        hide-details
+        :append-icon="'mdi-magnify'"
+        placeholder="Otsige"
+        outlined
+        dense
+        class="hidden-sm-and-down"
+        @click:append="() => {}"
+      ></v-text-field>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="white" class="ml-2" icon v-bind="attrs" v-on="on"
+            ><v-icon>mdi-microphone</v-icon></v-btn
+          >
+        </template>
+        <div class="font-weight-medium">
+          Häälotsing
+        </div>
+      </v-tooltip>
+      <v-spacer />
+      <div v-for="[icon, name] in toolbar_elements" :key="name">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="white" class="ml-2" icon v-bind="attrs" v-on="on"
+              ><v-icon>{{ icon }}</v-icon></v-btn
+            >
+          </template>
+          <div class="font-weight-medium">
+            {{ name }}
+          </div>
+        </v-tooltip>
+      </div>
+      <v-btn icon x-large v-on="on">
+        <v-avatar class="brown darken-1" size="34">
+          <div class="font-weight-medium">
+            {{ user.name.charAt(0) }}
+          </div>
+        </v-avatar>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -288,41 +330,51 @@ export default {
       ],
       more_subscriptions: [
         [
-          "https://yt3.ggpht.com/ytc/AAUvwniGuwmwnYd63hDKeebvj4KBUBvouY3FtszqSRMrYw=s88-c-k-c0x00ffffff-no-rj",
-          "Sidemen",
-          "live"
-        ],
-        [
-          "https://yt3.ggpht.com/ytc/AAUvwninLx6_ZEJLBDLKYaB-9KMKLb5aQOoFUC_cx-Kz=s88-c-k-c0x00ffffff-no-rj",
-          "SidemenReacts",
+          "https://yt3.ggpht.com/ytc/AAUvwnj3mq3R1sfAd_8rYae4U9SPJ2n3bgeIXpclH8V5wQ=s88-c-k-c0x00ffffff-no-rj",
+          "Behzinga",
           "notification"
         ],
         [
-          "https://yt3.ggpht.com/ytc/AAUvwniVxsVsLQpT-pOCm1CpW1sG5PkFRBbAe4jExlSClg=s88-c-k-c0x00ffffff-no-rj",
-          "MoreSidemen",
-          null
+          "https://yt3.ggpht.com/ytc/AAUvwng0J8dnyjFIL2Ppu68MaztExk427GuIgZ8OuTiwBA=s88-c-k-c0x00ffffff-no-rj",
+          "bald and bankrupt",
+          "notification"
         ],
         [
           "https://yt3.ggpht.com/ytc/AAUvwnjbH0uVPRm82votoF1QMjuJbudQvTJjrR_cBOYyog=s88-c-k-c0x00ffffff-no-rj",
           "SwaggerSouls",
+          null
+        ],
+        [
+          "https://yt3.ggpht.com/ytc/AAUvwnj6uwqNTfAEznyJniAlKtOXuAkRKD45AcbGA0UQyA=s88-c-k-c0x00ffffff-no-rj",
+          "JJ Olatunji",
           "notification"
         ],
         [
-          "https://yt3.ggpht.com/ytc/AAUvwnipIOGF5oWVbSffcVHhvJm5guRr4A21wbbmy1NX=s88-c-k-c0x00ffffff-no-rj",
-          "LEMMiNO",
+          "https://yt3.ggpht.com/ytc/AAUvwnhoyqnBWkgK9hg5grq_5ZhDlCuWlEv8uObllBhDow=s88-c-k-c0x00ffffff-no-rj",
+          "Aperture",
           null
         ],
         [
-          "https://yt3.ggpht.com/ytc/AAUvwnj4Nx2WoQcBF-mPsUhE8H4Xvvasx17DwhJ14MzQ3Q=s88-c-k-c0x00ffffff-no-rj",
-          "Pyrocynical",
+          "https://yt3.ggpht.com/ytc/AAUvwniTUBwgg-gymFJ5r918PP3bkuH3NmBqxLYwynSIgA=s88-c-k-c0x00ffffff-no-rj",
+          "3kliksphilip",
           null
         ],
         [
-          "https://yt3.ggpht.com/ytc/AAUvwnhKr-KpJ_6VZDp1UHjpfnEjIQYQnxKQNMUg3WCMiw=s88-c-k-c0x00ffffff-no-rj",
-          "Callux",
+          "https://yt3.ggpht.com/ytc/AAUvwng_hZ6TmzHaqgmLycwH1XOCUAi-SQJRwULu8rmK7g=s88-c-k-c0x00ffffff-no-rj",
+          "Shiey",
           "notification"
         ]
-      ]
+      ],
+      toolbar_elements: [
+        ["mdi-video-plus", "Loomine"],
+        ["mdi-apps", "YouTube'i rakendused"],
+        ["mdi-bell", "Märguanded"]
+      ],
+      user: {
+        name: "siim",
+        picture:
+          "https://yt3.ggpht.com/yti/ANoDKi4dRl2HF2KquvXuS5bRRnYrxTVx_PgRBp1-bg=s88-c-k-c0x00ffffff-no-rj-mo"
+      }
     };
   }
 };
@@ -335,10 +387,5 @@ export default {
 
 .v-navigation-drawer__content::-webkit-scrollbar-thumb {
   background: #616161;
-}
-
-.v-list-item-icon__content {
-  display: flex;
-  flex-direction: column;
 }
 </style>
