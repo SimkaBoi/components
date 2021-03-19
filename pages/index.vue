@@ -14,7 +14,9 @@
                   <v-img :src="video.avatar"></v-img> </v-avatar
               ></v-col>
               <v-col :cols="10" class="pl-0">
-                <v-list-item-title class="mb-3 font-weight-bold"
+                <v-list-item-title
+                  class="font-weight-bold"
+                  style="white-space: pre-wrap; margin-bottom: -20px;"
                   >{{ video.title }}
                 </v-list-item-title>
                 <v-list-item-subtitle
