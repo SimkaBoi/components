@@ -162,15 +162,33 @@
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
-        <v-list nav dense>
-          <v-list-item>
-            <v-list-item-content>
-              <p>aa</p>
-              <p>aa</p>
-              <p>aa</p>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <div class="ml-6 mr-8 mt-2" style="letter">
+          <a href="#" class="link mr-1 text--secondary caption">Teave</a>
+          <a href="#" class="link mr-1 text--secondary caption">Press</a>
+          <a href="#" class="link text--secondary caption">Autoriõigused</a>
+          <a href="#" class="link text--secondary caption"
+            >Võtke meiega ühendust</a
+          >
+          <a href="#" class="link text--secondary mr-1 caption">Sisuloojad</a>
+          <a href="#" class="link text--secondary mr-1 caption">Reklaam</a>
+          <a href="#" class="link text--secondary caption">Arendajad</a>
+        </div>
+        <div class="ml-6 mr-8 mt-2">
+          <a href="#" class="link text--secondary mr-1 caption">Tingimused</a>
+          <a href="#" class="link text--secondary caption">Privaatsus</a>
+          <a href="#" class="link text--secondary mr-3 caption"
+            >Eeskirjad ja ohutus</a
+          >
+          <a href="#" class="link text--secondary caption"
+            >Kuidas YouTube toimib?</a
+          >
+          <a href="#" class="link text--secondary caption"
+            >Proovige uusi funktsioone</a
+          >
+        </div>
+        <p class="ml-6 mt-4 body-2 darken" style="color: #757575">
+          © 2021 Google LLC
+        </p>
       </div>
     </v-navigation-drawer>
 
@@ -232,18 +250,6 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
   </v-app>
 </template>
 
@@ -255,11 +261,8 @@ export default {
       drawer: false,
       fixed: false,
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
       showMoreSubscriptions: false,
       title: "Youtube",
-      cards: ["Today", "Yesterday"],
       links_mini: [
         ["mdi-home", "Avaleht"],
         ["mdi-fire", "Populaarsed"],
@@ -345,8 +348,8 @@ export default {
           null
         ],
         [
-          "https://yt3.ggpht.com/ytc/AAUvwnj6uwqNTfAEznyJniAlKtOXuAkRKD45AcbGA0UQyA=s88-c-k-c0x00ffffff-no-rj",
-          "JJ Olatunji",
+          "https://yt3.ggpht.com/ytc/AAUvwnivJQdsEtMFvt5Hqf9AaUvBY14YNNmLsezA_KLu=s88-c-k-c0x00ffffff-no-rj",
+          "W2SClips",
           "notification"
         ],
         [
@@ -387,5 +390,10 @@ export default {
 
 .v-navigation-drawer__content::-webkit-scrollbar-thumb {
   background: #616161;
+}
+
+.link {
+  text-decoration: none;
+  background-color: none;
 }
 </style>
